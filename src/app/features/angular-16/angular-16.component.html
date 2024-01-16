@@ -1,0 +1,18 @@
+<h1>¿Qué novedades trae Angular 16?</h1>
+
+<nav>
+  <ul>
+    <li routerLink="signals" routerLinkActive="active">SIGNALS</li>
+    <li
+      routerLink="router"
+      routerLinkActive="active"
+      [queryParams]="{
+        name: 'Jose'
+      }"
+    >
+      NEW ROUTER INPUTS
+    </li>
+  </ul>
+</nav>
+
+<router-outlet />

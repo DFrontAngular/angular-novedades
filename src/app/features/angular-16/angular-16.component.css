@@ -1,0 +1,13 @@
+ul {
+  display: flex;
+  gap: 12px;
+}
+
+li {
+  cursor: pointer;
+  list-style: none;
+}
+
+.active {
+  font-weight: bold;
+}
