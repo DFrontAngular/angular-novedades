@@ -1,15 +1,18 @@
-<h2>
-  Tenemos nuevas propiedades para mejorar el tratamitno de los &#64;Input()
-</h2>
+<h2>Nuevas propiedades para mejorar el tratamiento de los &#64;Input()</h2>
 
-<section>
-  <p>Este input es requerido: {{ color }}</p>
-</section>
+<article class="d-flex gap-4 flex-column">
+  <section>
+    <p>Este input es requerido: valor => {{ color }}</p>
+  </section>
 
-<section>
-  <p>El valor de este input es transformado al llegar: {{ amount }}</p>
-</section>
+  <section>
+    <p>
+      El valor de este input es transformado al llegar, multiplicandose x10:
+      {{ amount }}
+    </p>
+  </section>
 
-<section>
-  <p>Este valor es transformado a booleano al llegar: {{ required }}</p>
-</section>
+  <section>
+    <p>Este valor es transformado a booleano al llegar: {{ required }}</p>
+  </section>
+</article>

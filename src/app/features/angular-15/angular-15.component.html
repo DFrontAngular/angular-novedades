@@ -1,36 +1,40 @@
 <h1>¿Qué novedades trae Angular 15?</h1>
 
-<section *ngIf="showSection">
-  <h1>STANDALONE COMPONENTS</h1>
-  <p>
-    Los componentes <strong>standalone</strong> son una nueva característica en
-    Angular que nos permite crear componentes reutilizables que se pueden usar
-    sin la necesidad de añadirlo en la sección de
-    <strong>Declarations</strong> en los NgModule. Esto puede hacer que su
-    código sea más modular, eficiente y más fácil de compartir. Importando en
-    cada componente únicamente los elementos que vamos a utilizar.
-  </p>
-</section>
+<article class="d-flex gap-4 flex-column">
+  <section *ngIf="showSection">
+    <h2 class="line"><u>Standalone Components</u></h2>
+    <p>
+      Los componentes <strong>standalone</strong> son una nueva característica
+      en Angular que nos permite crear componentes reutilizables que se pueden
+      usar sin la necesidad de añadirlo en la sección de
+      <strong>Declarations</strong> en los NgModule. Esto puede hacer que su
+      código sea más modular, eficiente y más fácil de compartir. Importando en
+      cada componente únicamente los elementos que vamos a utilizar.
+    </p>
+  </section>
 
-<section>
-  <h1>Nueva forma de declarar el enrutador</h1>
-  <p>
-    Debido a que no tenemos AppRoutingModule. Tenemos que cambiar la forma en la
-    que se definian las rutas. Esta nueva forma es dentro del archivo
-    <code>main.ts</code>, dentro de los <i>providers</i> tenemos que añadir un
-    nuevo método llamado: <code>provideRouter</code> al cual le pasaremos
-    nuestro objeto con las rutas de nuestra aplicación.
-  </p>
-</section>
+  <section>
+    <h2><u>Nueva forma de declarar el enrutador</u></h2>
+    <p>
+      Debido a que no tenemos AppRoutingModule. Tenemos que cambiar la forma en
+      la que se definian las rutas. Esta nueva forma es dentro del archivo
+      <code>main.ts</code>, dentro de los <i>providers</i> tenemos que añadir un
+      nuevo método llamado: <code>provideRouter</code> al cual le pasaremos
+      nuestro objeto con las rutas de nuestra aplicación.
+    </p>
+  </section>
 
-<section>
-  <h1>Optimiza la carga de imagenes con la nueva directica ngSrc</h1>
-  <p>
-    Simplemente deberemos sustituir el atributo <code>src</code> del elemento
-    img, por <code>ngSrc</code>, y no olvidarnos de importar el módulo
-    NgOptimizedImage en nuestro componente
-  </p>
-</section>
+  <section>
+    <h2><u>Optimiza la carga de imagenes con la nueva directica ngSrc</u></h2>
+    <p>
+      Simplemente deberemos sustituir el atributo <code>src</code> del elemento
+      img, por <code>ngSrc</code>, y no olvidarnos de importar el módulo
+      NgOptimizedImage en nuestro componente
+    </p>
+  </section>
+</article>
+
+<hr />
 
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro odio incidunt,
 eligendi, fugiat similique rem eaque aspernatur aliquam placeat obcaecati alias

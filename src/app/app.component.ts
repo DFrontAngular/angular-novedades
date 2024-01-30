@@ -11,7 +11,7 @@ import { routes } from './app.routes';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'angular-novedades';
+  title = 'Angular-Novedades';
 
   routes = routes.map(({ path }) => path);
 }

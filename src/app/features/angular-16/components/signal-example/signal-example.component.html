@@ -1,11 +1,40 @@
+<h2><u>Signals</u></h2>
+
+<p>La cantidad de post es {{ postCount() }}</p>
 <section *ngFor="let post of posts()">
-  <h1>{{ post.title }}</h1>
+  <h3>{{ post.title }}</h3>
   <p>{{ post.body }}</p>
 </section>
 
 <ng-container *ngIf="posts$ | async as posts">
   <section *ngFor="let post of posts">
-    <h1>{{ post.title }}</h1>
+    <h3>{{ post.title }}</h3>
     <p>{{ post.body }}</p>
   </section>
 </ng-container>
+
+<hr />
+
+<p>Signal nombre: {{ name() }}</p>
+<p>Signal edad: {{ age() }}</p>
+
+<p>Observable edad {{ age$ | async }}</p>
+
+<section class="d-flex gap-4">
+  <button class="btn btn-primary" (click)="changeAge()" type="button">
+    Cambiar edad
+  </button>
+  <button class="btn btn-secondary" (click)="changeName()" type="button">
+    Cambiar nombre
+  </button>
+</section>
+
+<hr />
+
+<p class="alert alert-success">
+  Los valores de los signals estan memoizados, por lo que aunque realize un
+  <code>set</code> o <code>update</code> del signal, si el valor no cambia, no
+  se va a realizar un re-render. <br />
+  En cambio, al realizar un <code>.next("new value")</code> a un observable,
+  siempre va a ejecutarse.
+</p>

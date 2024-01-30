@@ -11,10 +11,12 @@ import { NewInputsComponent } from '../new-inputs/new-inputs.component';
   imports: [NgIf, NewInputsComponent],
 })
 export class RouterExampleComponent implements OnInit {
+  // FORMA ANTIGUA
   #route = inject(ActivatedRoute);
-
-  @Input() name: string = '';
   // name: string = '';
+
+  // FORMA NUEVA
+  @Input() name: string = '';
 
   ngOnInit(): void {
     // this.name = this.#route.snapshot.queryParams['name'];
