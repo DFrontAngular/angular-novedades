@@ -13,15 +13,25 @@ import { NewInputsComponent } from '../new-inputs/new-inputs.component';
 export class RouterExampleComponent implements OnInit {
   // FORMA ANTIGUA
   #route = inject(ActivatedRoute);
-  // name: string = '';
+  oldName: string = '';
 
-  // FORMA NUEVA
+  // ACCEDER DE MANERA ESTÁTICA
   @Input() name: string = '';
 
+  // ESCUCHANDO A LOS CAMBIOS, SI OCURRIERA UN CAMBIO DE RUTA DENTRO DEL MISMO COMPONENTE
+  // @Input() set name(value: string) {
+  //   this.value = value;
+  // }
+
+  value = '';
+
   ngOnInit(): void {
-    // this.name = this.#route.snapshot.queryParams['name'];
+    // ACCEDER DE MANERA ESTÁTICA
+    this.oldName = this.#route.snapshot.queryParams['name'];
+
+    // ESCUCHANDO A LOS CAMBIOS, SI OCURRIERA UN CAMBIO DE RUTA DENTRO DEL MISMO COMPONENTE
     // this.#route.queryParams.subscribe(({ name }) => {
-    //   this.name = name;
+    //   this.oldName = name;
     // });
   }
 }

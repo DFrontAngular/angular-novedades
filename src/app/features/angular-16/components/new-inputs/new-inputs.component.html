@@ -1,18 +1,52 @@
-<h2>Nuevas propiedades para mejorar el tratamiento de los &#64;Input()</h2>
+<h2>
+  <u>Nuevas propiedades para los &#64;Input()</u>
+</h2>
 
-<article class="d-flex gap-4 flex-column">
-  <section>
-    <p>Este input es requerido: valor => {{ color }}</p>
-  </section>
+<section>
+  <p>
+    En esta versión 16 se han introducido
+    <strong>nuevas funcionalidades</strong> relacionadas con los &#64;Input() de
+    los componentes.
+  </p>
+</section>
 
-  <section>
-    <p>
-      El valor de este input es transformado al llegar, multiplicándose x10:
-      {{ amount }}
-    </p>
-  </section>
+<section class="alert alert-primary">
+  <h3>&#64;Input(&#123; required &#125;)</h3>
 
-  <section>
-    <p>Este valor es transformado a booleano al llegar: {{ required }}</p>
-  </section>
-</article>
+  <p>
+    Ahora, los inputs pueden ser marcados como requeridos. Esto significa que si
+    no especificamos un valor para un input, obtendremos un error de tiempo de
+    compilación
+  </p>
+</section>
+
+<section class="alert alert-secondary">
+  <h3>&#64;Input(&#123; alias &#125;)</h3>
+
+  <p>
+    A veces, queremos que el nombre de la propiedad en el DOM sea diferente al
+    nombre de la propiedad del componente. Para lograr esto, podemos usar un
+    alias al enlazar el input.
+  </p>
+</section>
+
+<section class="alert alert-light">
+  <h3>&#64;Input(&#123; booleanAttribute &#125;)</h3>
+
+  <p>
+    Se ha introducido una nueva funcionalidad llamada booleanAttribute que nos
+    permite transformar un valor (normalmente una cadena) en un valor booleano.
+    Esto es especialmente útil cuando trabajamos con atributos booleanos en el
+    DOM, como disabled, checked, etc
+  </p>
+</section>
+
+<section class="alert alert-info">
+  <h3>&#64;Input(&#123; transform &#125;)</h3>
+
+  <p>
+    Además, se ha introducido una nueva opción de transformación para los
+    inputs. Esto permite modificar el valor antes de asignarlo a la propiedad
+    del componente
+  </p>
+</section>

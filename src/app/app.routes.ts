@@ -31,6 +31,13 @@ export const routes: Routes = [
             './features/angular-16/components/router-example/router-example.component'
           ).then((c) => c.RouterExampleComponent),
       },
+      {
+        path: 'inputs',
+        loadComponent: () =>
+          import(
+            './features/angular-16/components/new-inputs/new-inputs.component'
+          ).then((c) => c.NewInputsComponent),
+      },
     ],
   },
   {

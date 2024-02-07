@@ -1,10 +1,67 @@
-<article class="d-flex gap-4 flex-column">
-  <section>
-    <h2><u>Nuevos Inputs</u></h2>
-    <p *ngIf="name">Query param recibido por input: {{ name }}!</p>
-  </section>
-</article>
+<h2>
+  <u>Component Input Binding</u>
+</h2>
+
+<section>
+  <p>
+    Una de las nuevas características introducidas por Angular 16 es la
+    capacidad de vincular parámetros de ruta directamente a los &#64;Input de
+    los componentes.
+    <br />
+    Esta nueva funcionalidad elimina todo el boiler plate que necesitábamos para
+    acceder a los params o queryParams.
+  </p>
+
+  <p>De la forma antigua teníamos que hacer los siguientes pasos:</p>
+
+  <ul>
+    <li>
+      Inyectar el servicio ActivatedRoute en cada componente que necesite
+      recuperar parámetros de ruta
+    </li>
+    <li>
+      Que nos suscribamos al observable paramMap y así, manejar la baja de la
+      suscripción
+    </li>
+    <li>Es un código repetitivo que tenemos que escribir una y otra vez</li>
+  </ul>
+</section>
+
+<section class="alert alert-primary">
+  <h3>¿Cómo empezar a utilizarlo?</h3>
+  <p>
+    En primer lugar debemos importar el siguiente método en los providers de
+    nuestro <strong>main.ts</strong>
+  </p>
+  <code>
+    providers: [ provideRouter(appRoutes, withComponentInputBinding()), ]
+  </code>
+</section>
+
+<section class="alert alert-secondary">
+  <h3>Acceder a los params o queryParams</h3>
+
+  <p>
+    Ahora simplemente tendremos que poner <strong>&#64;Input()</strong> con el
+    nombre del param que queremos acceder y podemos comenzar a utilizarlo. (Como
+    haríamos si utilizáramos el snapshot, ya que en este caso no detecta nuevos
+    cambios de ruta.)
+  </p>
+
+  <p>
+    Si queremos reaccionar a los cambios debemos utilizar un setter en nuestro
+    <strong>&#64;Input()</strong> y cumpliría la misma función que cuando nos
+    suscribíamos.
+  </p>
+</section>
 
 <hr />
 
-<app-new-inputs color="primary" [amount]="5" required />
+<p>Valor con input: {{ value }}</p>
+
+<p>Valor forma tradicional: {{ oldName }}</p>
+
+<!-- La propiedad COLOR es requerida -->
+<!-- La propiedad AMOUNT recibe una transformación al recibirlo el componente -->
+<!-- La propiedad SHOW_CONTENT se puede utilizar directamente sin indicar su valor, o como un string -->
+<!-- <app-new-inputs color="secondary" [amount]="5" checked="false" /> -->
