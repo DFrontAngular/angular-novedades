@@ -1,16 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  effect,
-  inject,
-  signal,
-  untracked,
-} from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { BehaviorSubject } from 'rxjs';
-import { PostsService } from '../../services/posts.service';
+import { Component, OnInit, computed, effect, signal } from '@angular/core';
 
 @Component({
   selector: 'app-signal-example',
@@ -18,40 +7,47 @@ import { PostsService } from '../../services/posts.service';
   imports: [CommonModule],
   templateUrl: './signal-example.component.html',
   styleUrl: './signal-example.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignalExampleComponent {
-  posts = inject(PostsService).getUsersSignal();
-  postCount = computed(() => this.posts().length);
+export class SignalExampleComponent implements OnInit {
+  // WRITABLE SIGNAL
+  count = signal(10);
 
-  posts$ = inject(PostsService).getUsers();
+  // READ-ONLY SIGNAL
+  doubleCount = computed(() => this.count() * 2);
 
-  age = signal(25);
-  name = signal('Jonh');
-
-  age$ = new BehaviorSubject<number>(25);
+  // PODEMOS DEFINIR LOS EFFECTS AQUÍ EN LUGAR DEL CONSTRUCTOR PARA TENER NOMBRES MÁS DESCRIPTIVOS
+  countEffect = effect(() => {
+    console.log(
+      `Effect desde propiedad del componente, count: ${this.count()}`
+    );
+  });
 
   constructor() {
-    effect(() => {
-      console.log(
-        `Me ejecuto cuando esta signal cambia este signal: ${this.age()}, pero este lo tengo sin seguimiento ${untracked(
-          () => this.name()
-        )}`
-      );
-    });
+    // ACTUARIA DE MANERA SIMILAR A LA SUSCRIPCIÓN EN LOS OBSERVABLES
+    effect(
+      () => {
+        console.log(`Effect desde el contructuro, count: ${this.count()}`);
 
-    this.age$.pipe(takeUntilDestroyed()).subscribe({
-      next: (age) => console.log('Nuevo valor en el observable: ', age),
-    });
+        // ESTE COMPORTAMIENTO NO ESTÁ PERMITIDO POR DEFECTO, MEJOR UTILIZAR COMPUTED SIGNALS
+        // PROBAR A DESCOMENTAR PARA VER EL ERROR EN CONSOLA
+        // this.count.set(5);
+      }
+      // {
+      //   allowSignalWrites: true,
+      // }
+    );
   }
 
-  changeName() {
-    this.name.set('New name');
-  }
+  ngOnInit(): void {}
 
-  changeAge() {
-    this.age.update((val) => 30);
-    // this.age.set(30);
-    this.age$.next(30);
+  changeCount() {
+    // Cambio el valor directamente
+    this.count.set(15);
+
+    // No podemos realizar cambios de valores en los computed signal, son de sólo lectura
+    // this.doubleCount.set(5)
+
+    // Actualizamos el valor dependiendo de su valor previo
+    // this.count.update((value) => value + 1);
   }
 }
